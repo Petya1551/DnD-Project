@@ -10,4 +10,16 @@ public class Item {
         this.bonus = bonus;
         this.type = type;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public String getType() {
+        return type;
+    }
 }
