@@ -9,7 +9,6 @@ public class Warrior extends Hero{
         this.health = 50;
     }
 
-
     @Override
     public String getRace() {
         return "Warrior";

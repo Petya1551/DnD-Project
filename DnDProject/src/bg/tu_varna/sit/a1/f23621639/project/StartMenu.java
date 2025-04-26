@@ -1,6 +1,9 @@
 package bg.tu_varna.sit.a1.f23621639.project;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 public class StartMenu {
     public static void main(String[] args) throws InterruptedException {
@@ -82,16 +85,44 @@ public class StartMenu {
                     scanner.nextLine();
                     System.out.println("\nBefore we begin your journey, please enter your username to embark on your quest.(max 10 characters)");
                     String username = scanner.nextLine();
+                    String user = username;
 
                     while (username.length() > 10){
                         System.out.println("Username exceeds the 10-character limit. Please enter a shorter username.");
                         username = scanner.nextLine();
                     }
 
+                    System.out.println("\nChoose your hero class: \n" +
+                                        "1. Human\n" +
+                                        "2. Mage\n" +
+                                        "3. Warrior");
+
+                    int heroChoice = scanner.nextInt();
+
+                    Map<Integer, Supplier<Hero>> heroMap = new HashMap<>();
+                    heroMap.put(1, () -> new Human(user));
+                    heroMap.put(2, () -> new Mage(user));
+                    heroMap.put(3, () -> new Warrior(user));
+
+                    Supplier<Hero> defaultHero = () -> new Warrior(user);
+                    Hero hero = heroMap.getOrDefault(heroChoice, defaultHero).get();
+
+                    System.out.println("\nYou have chosen the " + hero.getRace() + " race! Here is the current information for your hero:");
+                    System.out.println(hero.toString() + "\n");
+
+                    //hero.levelUp();
+                    //System.out.println(hero.toString());
+
+                    /*ItemFactory itemFactory = new ItemFactory();
+                    Item foundItem = itemFactory.generateRandomItem();
+                    hero.findTreasure(foundItem);
+                    System.out.println(hero.toString() + "\n");*/
+
                     for (int i = 0; i <= 100; i++) {
                         System.out.print("\rLoading " + i +"%");
                         Thread.sleep(50);
                     }
+                    scanner.nextLine();
 
                     System.out.println("\n\n-------------------------------------------------------------------------------\n" +
                             "|       The air is damp, the scent of moss and stone filling your lungs.      |\n" +
