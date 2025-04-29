@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.a1.f23621639.project.items;
 
+import bg.tu_varna.sit.a1.f23621639.project.Armor;
+
 import java.util.Random;
 
 public class ItemFactory {

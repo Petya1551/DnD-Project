@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.a1.f23621639.project.races;
 
-import bg.tu_varna.sit.a1.f23621639.project.items.Armor;
+import bg.tu_varna.sit.a1.f23621639.project.Armor;
 import bg.tu_varna.sit.a1.f23621639.project.items.Item;
 import bg.tu_varna.sit.a1.f23621639.project.items.Spell;
 import bg.tu_varna.sit.a1.f23621639.project.items.Weapon;
