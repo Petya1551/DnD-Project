@@ -95,6 +95,23 @@ public abstract class Hero {
         System.out.println("New stats -> Strength: " + this.strength + ", Mana: " + this.mana + ", Health: " + this.health);
     }
 
+    public int attack() {
+        int bonus = weapon.getBonus();
+        return strength + (strength * bonus / 100);
+    }
+
+    public int castSpell() {
+        int bonus = spell.getBonus();
+        return mana + (mana * bonus / 100);
+    }
+
+    public boolean isAlive() {
+        if (health > 0)
+            return true;
+        else
+            return false;
+    }
+
     public abstract String getRace();
 
     public String getName() {
@@ -164,6 +181,7 @@ public abstract class Hero {
     @Override
     public String toString() {
         return  "Name: " + getName() +
+                "\nRace: " + getRace() +
                 "\nStrength: " + getStrength() +
                 "\nMana: " + getMana() +
                 "\nHealth: " + getHealth() +
