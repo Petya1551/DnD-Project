@@ -8,17 +8,32 @@ public class Dragon extends Monster {
     }
 
     @Override
-    public void attack() {
-
+    public int attack() {
+        return strength;
     }
 
     @Override
-    public void castSpell() {
-
+    public int castSpell() {
+        return mana;
     }
 
     @Override
-    public void takeDamage() {
+    public void takeDamage(int damage) {
+        double scalesReduction = damage * scales;
+        int reduced = damage - (int) scalesReduction;
+        health -= reduced;
 
+        if (health < 0) {
+            health = 0;
+            System.out.println("The Dragon is dead.");
+        }
+        else {
+            System.out.println("The Dragon gets " + reduced + " damage. \nRemaining health: " + health);
+        }
+    }
+
+    @Override
+    public String getMonsterType() {
+        return "Dragon";
     }
 }
