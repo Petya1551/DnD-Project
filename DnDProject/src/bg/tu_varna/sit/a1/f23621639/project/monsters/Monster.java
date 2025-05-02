@@ -5,7 +5,7 @@ public abstract class Monster {
     protected int mana;
     protected int health;
 
-    public Monster(int strength, int mana, int health) {
+    public Monster() {
         this.strength = strength;
         this.mana = mana;
         this.health = health;

@@ -1,5 +1,10 @@
 package bg.tu_varna.sit.a1.f23621639.project.commands;
 
+import bg.tu_varna.sit.a1.f23621639.project.battle.Battle;
+import bg.tu_varna.sit.a1.f23621639.project.items.Item;
+import bg.tu_varna.sit.a1.f23621639.project.items.ItemFactory;
+import bg.tu_varna.sit.a1.f23621639.project.monsters.Dragon;
+import bg.tu_varna.sit.a1.f23621639.project.monsters.Monster;
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 import bg.tu_varna.sit.a1.f23621639.project.races.Human;
 import bg.tu_varna.sit.a1.f23621639.project.races.Mage;
@@ -7,6 +12,7 @@ import bg.tu_varna.sit.a1.f23621639.project.races.Warrior;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
@@ -45,14 +51,6 @@ public class BeginQuestCommand implements Command {
 
         System.out.println("\nYou have chosen the " + hero.getRace() + " race! Here is the current information for your hero:");
         System.out.println(hero.toString() + "\n");
-
-        //hero.levelUp();
-        //System.out.println(hero.toString());
-
-                    /*ItemFactory itemFactory = new ItemFactory();
-                    Item foundItem = itemFactory.generateRandomItem();
-                    hero.findTreasure(foundItem);
-                    System.out.println(hero.toString() + "\n");*/
 
         for (int i = 0; i <= 100; i++) {
             System.out.print("\rLoading " + i +"%");
@@ -94,6 +92,16 @@ public class BeginQuestCommand implements Command {
                         "---------------------------------------------------------------------------------------\n");
         System.out.println("Click Any Key To Continue...");
         scanner.nextLine();
+
+        ItemFactory itemFactory = new ItemFactory();
+        Item foundItem = itemFactory.generateRandomItem();
+        hero.findTreasure(foundItem);
+        System.out.println(hero.toString() + "\n");
+
+        Monster monster = new Dragon();
+        Random random = new Random();
+        Battle battle = new Battle(hero, monster, random, scanner);
+        battle.startBattle();
 
         System.out.println("CONTROL GUIDE ");
         System.out.println("Use the following controls to navigate and interact with the world:");

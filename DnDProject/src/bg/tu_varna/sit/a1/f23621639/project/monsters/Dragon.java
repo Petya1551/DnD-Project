@@ -1,20 +1,28 @@
 package bg.tu_varna.sit.a1.f23621639.project.monsters;
 
+import java.util.Random;
+
 public class Dragon extends Monster {
     private double scales;
-    public Dragon(int strength, int mana, int health, double scales) {
-        super(25, 25, 50);
+    Random random = new Random();
+
+    public Dragon() {
+        this.strength = 25;
+        this.mana = 25;
+        this.health = 50;
         this.scales = 0.15;
     }
 
     @Override
     public int attack() {
-        return strength;
+        int attack = 10 + random.nextInt(16);
+        return attack;
     }
 
     @Override
     public int castSpell() {
-        return mana;
+        int spell = 10 + random.nextInt(16);
+        return spell;
     }
 
     @Override
@@ -22,10 +30,11 @@ public class Dragon extends Monster {
         double scalesReduction = damage * scales;
         int reduced = damage - (int) scalesReduction;
         health -= reduced;
+        strength -= reduced;
+        mana -= reduced;
 
         if (health < 0) {
             health = 0;
-            System.out.println("The Dragon is dead.");
         }
         else {
             System.out.println("The Dragon gets " + reduced + " damage. \nRemaining health: " + health);
