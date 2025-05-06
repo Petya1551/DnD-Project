@@ -1,13 +1,17 @@
 package bg.tu_varna.sit.a1.f23621639.project.items;
 
+import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
+
 import java.util.Random;
 
 public class ItemFactory {
-    public Item generateRandomItem() {
+        public Item generateRandomItem(Hero hero) {
         Random random = new Random();
 
         int itemType = random.nextInt(3);
-        int bonus = 10 + random.nextInt(41);
+        int min = 2 * hero.getLevel();
+        int max = 3 * hero.getLevel() + 1;
+        int bonus = 20 + random.nextInt(min, max);
 
         Item item = null;
 

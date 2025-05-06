@@ -26,9 +26,11 @@ public class Battle {
     }
 
     public void startBattle() {
-        System.out.println("A battle begins between " + hero.getName() + " the " + hero.getRace() + " and a " + monster.getMonsterType() + "!");
-        System.out.println("Your status is: \n" + hero.toString());
-        System.out.println("The " + monster.getMonsterType() + " status is: \n" + monster.toString());
+        int initialHeroHealth = hero.getHealth();
+        System.out.println("BATTLE BEGINS");
+        System.out.println("A battle begins between " + hero.getName() + " the " + hero.getRace() + " and a " + monster.getMonsterType() + "!\n");
+        System.out.println("Your current status is: \n" + hero.toString());
+        System.out.println("\nThe " + monster.getMonsterType() + " status is: \n" + monster.toString() + "\n");
 
         boolean heroTurn = random.nextBoolean();
         if (heroTurn) {
@@ -39,7 +41,7 @@ public class Battle {
 
         while (hero.getHealth() > 0 && monster.getHealth() > 0) {
             if (heroTurn) {
-                System.out.println("Choose your attack: Physical or Spell:");
+                System.out.printf("Choose your attack 'Physical' or 'Spell': ");
                 Map<String, Supplier<Integer>> attack = new HashMap<>();
                 attack.put("physical", () -> hero.attack());
                 attack.put("spell", () -> hero.castSpell());
@@ -47,16 +49,16 @@ public class Battle {
                 String choice = scanner.nextLine().trim().toLowerCase();
 
                 while (!choice.equals("physical") && !choice.equals("spell")) {
-                    System.out.println("Invalid choice! Please choose 'Physical' or 'Spell'.");
+                    System.out.printf("\nInvalid choice! Please choose 'Physical' or 'Spell': ");
                     choice = scanner.nextLine().trim().toLowerCase();
                 }
 
                 int damage = attack.get(choice).get();
 
                 if (choice.equals("physical")) {
-                    System.out.println(hero.getName() + " attacks with " + hero.getWeapon().getName() + " weapon for " + damage + " damage!");
+                    System.out.println("\n" + hero.getName() + " attacks with " + hero.getWeapon().getName() + " weapon for " + damage + " damage!");
                 } else if (choice.equals("spell")) {
-                    System.out.println(hero.getName() + " casts " + hero.getSpell().getName() + " spell for " + damage + " damage!");
+                    System.out.println("\n" + hero.getName() + " casts " + hero.getSpell().getName() + " spell for " + damage + " damage!");
                 }
                 monster.takeDamage(damage);
             }
@@ -77,15 +79,31 @@ public class Battle {
         }
 
         if (hero.getHealth() <= 0) {
-            System.out.println(hero.getName() + " has died. Game over.");
+            System.out.println("\n------------------------------------------------------------------------\n" +
+                    "|                             GAME OVER                                |\n" +
+                    "|                                                                      |\n" +
+                    "|                         You have fallen...                           |\n" +
+                    "|      The labyrinth claims yet another brave soul in silence.         |\n" +
+                    "|     Your journey ends here, but legends are not so easily lost.      |\n" +
+                    "------------------------------------------------------------------------\n");
+            System.exit(0);
         }
         else {
             System.out.println("The " + monster.getMonsterType() + " is defeated!");
-            int restoredHealth = hero.getHealth() + hero.getHealth() / 2;
-            hero.setHealth(restoredHealth);
-            System.out.println(hero.getName() + "'s health is restored to " + restoredHealth);
-            hero.levelUp();
-            System.out.println(hero.toString());
+            if (hero.getHealth() >= hero.getMaxHealth()) {
+                System.out.println(hero.getName() + "'s current health is " + hero.getMaxHealth());
+            }
+            else {
+                int restoredHealth = hero.getHealth() + initialHeroHealth / 2;
+
+                if (restoredHealth > hero.getMaxHealth()) {
+                    restoredHealth = hero.getMaxHealth();
+                }
+
+                hero.setHealth(restoredHealth);
+                System.out.println(hero.getName() + "'s health is restored to " + hero.getHealth() + "\n");
+            }
+
         }
     }
 }
