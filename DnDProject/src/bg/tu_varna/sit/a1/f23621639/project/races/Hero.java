@@ -4,6 +4,7 @@ import bg.tu_varna.sit.a1.f23621639.project.items.Armor;
 import bg.tu_varna.sit.a1.f23621639.project.items.Item;
 import bg.tu_varna.sit.a1.f23621639.project.items.Spell;
 import bg.tu_varna.sit.a1.f23621639.project.items.Weapon;
+import bg.tu_varna.sit.a1.f23621639.project.monsters.Monster;
 
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public abstract class Hero {
     protected int strength;
     protected int mana;
     protected int health;
+    protected int maxHealth;
     protected int level;
     protected Weapon weapon;
     protected Spell spell;
@@ -19,6 +21,7 @@ public abstract class Hero {
 
     public Hero(String name) {
         this.name = name;
+        this.maxHealth = 50;
         this.level = 1;
         this.weapon = new Weapon("Ordinary sword", 20);
         this.spell = new Spell("Fire ball", 20);
@@ -36,7 +39,11 @@ public abstract class Hero {
         }
 
         health -= reduced;
-        System.out.println(name + " takes " + reduced + " damage. Remaining health: " + health);
+        if (health < 0){
+            health = 0;
+        }
+
+        System.out.println(name + " takes " + reduced + " damage.\n" + name + "'s remaining health: " + health);
     }
 
     public void findTreasure(Item foundItem) {
@@ -46,26 +53,69 @@ public abstract class Hero {
         System.out.print("Do you want to equip it? Yes(Y) / No(N) ");
         String choice = scanner.nextLine();
 
+        while (!choice.equalsIgnoreCase("Y") && !choice.equalsIgnoreCase("N")) {
+            System.out.printf("\nInvalid Command. Please try again ");
+            choice = scanner.nextLine();
+        }
+
         if (choice.equalsIgnoreCase("Y")) {
             if (foundItem instanceof Weapon) {
-                System.out.println("Equipped new weapon: " + foundItem.getName());
+                System.out.println("\nEquipped new weapon: " + foundItem.getName() + ".\n");
                 this.weapon = (Weapon) foundItem;
+                System.out.println("   |^^^|\n" +
+                                   "    }_{\n" +
+                                   "    }_{\n" +
+                                   "/|_/---\\_|\\\n" +
+                                   "I _|\\_/|_ I\n" +
+                                   "\\| |   | |/\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "   |   |\n" +
+                                   "    \\ /\n" +
+                                   "     Y\n");
             } else if (foundItem instanceof Armor) {
-                System.out.println("Equipped new armor: " + foundItem.getName());
+                System.out.println("\nEquipped new armor: " + foundItem.getName() + ".\n");
                 this.armor = (Armor) foundItem;
+                System.out.println("\\_________________/");
+                System.out.println("|       | |       |");
+                System.out.println("|       | |       |");
+                System.out.println("|       | |       |");
+                System.out.println("|_______| |_______|");
+                System.out.println("|_______   _______|");
+                System.out.println("|       | |       |");
+                System.out.println("|       | |       |");
+                System.out.println(" \\      | |      /");
+                System.out.println("  \\     | |     /");
+                System.out.println("   \\____|_|____/\n");
             } else if (foundItem instanceof Spell) {
-                System.out.println("Equipped new spell: " + foundItem.getName());
+                System.out.println("\nEquipped new spell: " + foundItem.getName() + ".\n");
                 this.spell = (Spell) foundItem;
+                System.out.println("                _______");
+                System.out.println("               /   ___/");
+                System.out.println("              /    \\_");
+                System.out.println("            _/       \\");
+                System.out.println("           /     *    \\");
+                System.out.println("          /         *  \\");
+                System.out.println("         /    *         \\");
+                System.out.println("        /________|[  ]|___\\");
+                System.out.println("______./_________|[__]|____\\.______");
+                System.out.println("\\_________________________________/\n");
             }
         } else {
-            System.out.println("You discarded the " + foundItem.getName() + ".");
+            System.out.println("\nYou discarded the " + foundItem.getName() + ".\n");
         }
     }
 
     public void levelUp() {
         Scanner scanner = new Scanner(System.in);
         int points = 30;
-        int str = 0, mana = 0, hp = 0;
+        int str = 0, mana = 0, maxHp = 0;
 
         System.out.println("\n" + name + " leveled up to level " + (level + 1) + "!");
         System.out.println("You have " + points + " points to distribute between Strength, Mana, and Health.");
@@ -77,11 +127,11 @@ public abstract class Hero {
             System.out.print("Allocate to Mana: ");
             mana = Integer.parseInt(scanner.nextLine());
             System.out.print("Allocate to Health: ");
-            hp = Integer.parseInt(scanner.nextLine());
+            maxHp = Integer.parseInt(scanner.nextLine());
 
-            if (str + mana + hp != 30) {
+            if (str + mana + maxHp != 30) {
                 System.out.println("Invalid input. Total must be exactly 30 points. Try again.");
-                str = mana = hp = 0;
+                str = mana = maxHp = 0;
             } else {
                 break;
             }
@@ -89,10 +139,10 @@ public abstract class Hero {
 
         this.strength += str;
         this.mana += mana;
-        this.health += hp;
+        this.maxHealth += maxHp;
         this.level++;
 
-        System.out.println("New stats -> Strength: " + this.strength + ", Mana: " + this.mana + ", Health: " + this.health);
+        System.out.println("\nNew stats -> Strength: " + this.strength + ", Mana: " + this.mana + ", Health: " + this.maxHealth + "\n");
     }
 
     public int attack() {
@@ -146,6 +196,14 @@ public abstract class Hero {
         this.health = health;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -184,7 +242,7 @@ public abstract class Hero {
                 "\nRace: " + getRace() +
                 "\nStrength: " + getStrength() +
                 "\nMana: " + getMana() +
-                "\nHealth: " + getHealth() +
+                "\nHealth: " + getHealth() + "/" + getMaxHealth() +
                 "\nLevel: " + getLevel() +
                 "\nWeapon: " + getWeapon().getName() +
                 "\nSpell: " + getSpell().getName() +

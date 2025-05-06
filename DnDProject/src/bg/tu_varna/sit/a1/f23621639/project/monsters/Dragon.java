@@ -37,7 +37,7 @@ public class Dragon extends Monster {
             health = 0;
         }
         else {
-            System.out.println("The Dragon gets " + reduced + " damage. \nRemaining health: " + health);
+            System.out.println("The Dragon gets " + reduced + " damage. \nDragon's remaining health: " + health);
         }
     }
 

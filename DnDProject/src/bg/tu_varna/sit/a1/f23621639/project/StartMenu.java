@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.a1.f23621639.project;
 
 import bg.tu_varna.sit.a1.f23621639.project.commands.BeginQuestCommand;
-import bg.tu_varna.sit.a1.f23621639.project.commands.ContinueTaleCommand;
 import bg.tu_varna.sit.a1.f23621639.project.commands.ExitRealmCommand;
 import bg.tu_varna.sit.a1.f23621639.project.commands.MenuInvoker;
 
@@ -21,7 +20,7 @@ public class StartMenu {
                 "|                     of adventure.                       |\n" +
                 "-----------------------------------------------------------\n");
 
-        System.out.println("Click Any Key To Continue...");
+        System.out.println("Click Enter To Continue...");
         String command = scanner.nextLine();
 
         System.out.println("----------------------------------------------------------------\n" +
@@ -30,7 +29,7 @@ public class StartMenu {
                 "|         bold shall carve their names into legend.            |\n" +
                 "----------------------------------------------------------------\n");
 
-        System.out.println("Click Any Key To Continue...");
+        System.out.println("Click Enter To Continue...");
         scanner.nextLine();
 
         System.out.println("----------------------------------------------------------------------------------------------\n" +
@@ -61,20 +60,18 @@ public class StartMenu {
             System.out.println("==========================");
             System.out.println("   THE LABYRINTH AWAITS");
             System.out.println("==========================\n");
+            System.out.println("Type one of the following phrases to continue (e.g. Begin Your Quest or Leave the Realm).");
             System.out.println("1. Begin Your Quest");
-            System.out.println("2. Continue Your Tale");
-            System.out.println("3. Leave the Realm");
+            System.out.println("2. Leave the Realm");
 
             MenuInvoker invoker = new MenuInvoker();
             invoker.registerCommand("Begin your quest", new BeginQuestCommand(scanner));
-            invoker.registerCommand("Continue your tale", new ContinueTaleCommand(scanner));
             invoker.registerCommand("Leave the realm", new ExitRealmCommand(scanner));
 
             String input;
             while (true) {
                 input = scanner.nextLine().trim();
                 if (input.equalsIgnoreCase("Begin your quest") ||
-                        input.equalsIgnoreCase("Continue your tale") ||
                         input.equalsIgnoreCase("Leave the realm")) {
                     break;
                 } else {
