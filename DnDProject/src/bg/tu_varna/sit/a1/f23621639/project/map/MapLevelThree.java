@@ -2,37 +2,35 @@ package bg.tu_varna.sit.a1.f23621639.project.map;
 
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
-public class MapLevelOne extends Maps {
+public class MapLevelThree extends Maps{
 
-    public MapLevelOne(Hero hero) {
+    public MapLevelThree(Hero hero) {
         super(hero);
     }
 
     @Override
     protected String[] getMapFilePaths() {
         return new String[] {
-                "res/level1_1.txt",
-                "res/level1_2.txt"
+                "res/level3_1.txt",
+                "res/level3_2.txt"
         };
     }
 
-    @Override
     protected String getLevel() {
-        return "First";
+        return "Third";
     }
 
-    @Override
     public int currentLevel() {
-        return 1;
+        return 3;
     }
 
     @Override
     protected int getPlayerXEnd() {
-        return 8;
+        return 23;
     }
 
     @Override
     protected int getPlayerYEnd() {
-        return 8;
+        return 18;
     }
 }

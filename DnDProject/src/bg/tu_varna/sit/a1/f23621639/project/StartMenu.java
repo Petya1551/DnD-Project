@@ -1,8 +1,6 @@
 package bg.tu_varna.sit.a1.f23621639.project;
 
-import bg.tu_varna.sit.a1.f23621639.project.commands.BeginQuestCommand;
-import bg.tu_varna.sit.a1.f23621639.project.commands.ExitRealmCommand;
-import bg.tu_varna.sit.a1.f23621639.project.commands.MenuInvoker;
+import bg.tu_varna.sit.a1.f23621639.project.commands.*;
 
 import java.util.Scanner;
 
@@ -63,24 +61,22 @@ public class StartMenu {
             System.out.println("Type one of the following phrases to continue (e.g. Begin Your Quest or Leave the Realm).");
             System.out.println("1. Begin Your Quest");
             System.out.println("2. Leave the Realm");
+            System.out.println("3. Help");
 
             MenuInvoker invoker = new MenuInvoker();
-            invoker.registerCommand("Begin your quest", new BeginQuestCommand(scanner));
-            invoker.registerCommand("Leave the realm", new ExitRealmCommand(scanner));
+            invoker.registerCommand(CommandsEnum.BEGIN_QUEST, new BeginQuestCommand(scanner));
+            invoker.registerCommand(CommandsEnum.LEAVE_REALM, new ExitRealmCommand());
+            invoker.registerCommand(CommandsEnum.HELP, new HelpCommand());
 
             String input;
             while (true) {
-                input = scanner.nextLine().trim();
-                if (input.equalsIgnoreCase("Begin your quest") ||
-                        input.equalsIgnoreCase("Leave the realm")) {
-                    break;
+                input = scanner.nextLine().trim().toLowerCase();
+                if (invoker.hasCommand(input)) {
+                    invoker.executeCommand(input);
                 } else {
                     System.out.println("\nInvalid Command. Please type the full phrase exactly as shown.");
                 }
             }
-
-            invoker.executeCommand(input);
-            scanner.close();
         }
     }
 }

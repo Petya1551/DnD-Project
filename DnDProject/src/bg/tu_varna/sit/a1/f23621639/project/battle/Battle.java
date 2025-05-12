@@ -43,8 +43,8 @@ public class Battle {
             if (heroTurn) {
                 System.out.printf("Choose your attack 'Physical' or 'Spell': ");
                 Map<String, Supplier<Integer>> attack = new HashMap<>();
-                attack.put("physical", () -> hero.attack());
-                attack.put("spell", () -> hero.castSpell());
+                attack.put("physical", hero::attack);
+                attack.put("spell", hero::castSpell);
 
                 String choice = scanner.nextLine().trim().toLowerCase();
 
@@ -65,11 +65,11 @@ public class Battle {
             else {
                 boolean useAttack = random.nextBoolean();
                 if (useAttack) {
-                    int damage = monster.attack();
+                    int damage = monster.attack(hero);
                     System.out.println(monster.getMonsterType() + " attacks for " + damage + " damage!");
                     hero.takeDamage(damage);
                 } else {
-                    int damage = monster.castSpell();
+                    int damage = monster.castSpell(hero);
                     System.out.println(monster.getMonsterType() + " casts a spell for " + damage + " damage!");
                     hero.takeDamage(damage);
                 }

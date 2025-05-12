@@ -1,6 +1,9 @@
 package bg.tu_varna.sit.a1.f23621639.project.commands;
 
+import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelFour;
 import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelOne;
+import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelThree;
+import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelTwo;
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 import bg.tu_varna.sit.a1.f23621639.project.races.Human;
 import bg.tu_varna.sit.a1.f23621639.project.races.Mage;
@@ -26,11 +29,9 @@ public class BeginQuestCommand implements Command {
         while (username.length() > 10 || username.length() <= 0 || !username.matches("[a-zA-Z]+")) {
             if (username.length() > 10) {
                 System.out.println("Username exceeds the 10-character limit. Please enter a shorter username.");
-            }
-            else if (username.length() <= 0) {
+            } else if (username.length() <= 0) {
                 System.out.println("It seems you haven't entered your hero's username yet. Please provide your username to continue.");
-            }
-            else {
+            } else {
                 System.out.println("Username contains invalid characters. Only alphabetic characters are allowed without free spaces.");
             }
 
@@ -60,7 +61,7 @@ public class BeginQuestCommand implements Command {
         System.out.println(hero.toString() + "\n");
 
         for (int i = 0; i <= 100; i++) {
-            System.out.print("\rLoading " + i +"%");
+            System.out.print("\rLoading " + i + "%");
             Thread.sleep(50);
         }
 
@@ -105,25 +106,25 @@ public class BeginQuestCommand implements Command {
         System.out.println("To escape the maze's dark and foreboding walls, you must \nmake your way to the gate at the bottom right corner.");
         System.out.println("In the labyrinth you may face different monsters ('M') or you can find exciting treasures ('T').");
         System.out.println("\nUse the following controls to navigate and interact with the world:");
-        System.out.println("W: Move Forward");
+        System.out.println("W: Move Backward");
         System.out.println("A: Move Left");
-        System.out.println("S: Move Backward");
+        System.out.println("S: Move Forward");
         System.out.println("D: Move Right\n");
 
         for (int i = 0; i <= 100; i++) {
-            System.out.print("\rLoading " + i +"%");
+            System.out.print("\rLoading " + i + "%");
             Thread.sleep(50);
         }
         System.out.println();
         System.out.println();
 
-        MapLevelOne game = new MapLevelOne(hero);
-        game.start();
+        MapLevelOne levelOne = new MapLevelOne(hero);
+        levelOne.start();
 
-        if (hero.getHealth() > 0){
+        if (hero.getHealth() > 0) {
             System.out.println("\n------------------------------\n" +
                     "|  You dare to continue your |\n" +
-                    "|   journey to the next      |\n" +
+                    "|     journey to the next    |\n" +
                     "|   level of the labyrinth?  |\n" +
                     "------------------------------\n");
             System.out.printf("Yes(Y) / No(N) ");
@@ -134,19 +135,84 @@ public class BeginQuestCommand implements Command {
                 command = scanner.nextLine();
             }
 
-            if (command.equalsIgnoreCase("N")){
+            if (command.equalsIgnoreCase("N")) {
                 System.out.println("\n-----------------------------------------------------------------------\n" +
                         "|       Very well, traveler. The adventure is not for everyone.       |\n" +
                         "|   Should you change your mind, the realm will be waiting for you.   |\n" +
                         "-----------------------------------------------------------------------\n");
                 System.exit(0);
-            }
-            else if (command.equalsIgnoreCase("Y")){
+            } else if (command.equalsIgnoreCase("Y")) {
+                MapLevelTwo levelTwo = new MapLevelTwo(hero);
+                System.out.println();
+                levelTwo.start();
 
+                if (hero.getHealth() > 0) {
+                    System.out.println("\n------------------------------\n" +
+                            "|  You dare to continue your |\n" +
+                            "|     journey to the next    |\n" +
+                            "|   level of the labyrinth?  |\n" +
+                            "------------------------------\n");
+                    System.out.printf("Yes(Y) / No(N) ");
+
+                    command = scanner.nextLine();
+                    while (!command.equalsIgnoreCase("Y") && !command.equalsIgnoreCase("N")) {
+                        System.out.printf("\nInvalid Command. Please try again ");
+                        command = scanner.nextLine();
+                    }
+
+                    if (command.equalsIgnoreCase("N")) {
+                        System.out.println("\n-----------------------------------------------------------------------\n" +
+                                "|       Very well, traveler. The adventure is not for everyone.       |\n" +
+                                "|   Should you change your mind, the realm will be waiting for you.   |\n" +
+                                "-----------------------------------------------------------------------\n");
+                        System.exit(0);
+                    } else if (command.equalsIgnoreCase("Y")) {
+                        MapLevelThree levelThree = new MapLevelThree(hero);
+                        System.out.println();
+                        levelThree.start();
+
+                        if (hero.getHealth() > 0) {
+                            System.out.println("\n------------------------------\n" +
+                                    "|  You dare to continue your |\n" +
+                                    "|     journey to the next    |\n" +
+                                    "|   level of the labyrinth?  |\n" +
+                                    "------------------------------\n");
+                            System.out.printf("Yes(Y) / No(N) ");
+
+                            command = scanner.nextLine();
+                            while (!command.equalsIgnoreCase("Y") && !command.equalsIgnoreCase("N")) {
+                                System.out.printf("\nInvalid Command. Please try again ");
+                                command = scanner.nextLine();
+                            }
+
+                            if (command.equalsIgnoreCase("N")) {
+                                System.out.println("\n-----------------------------------------------------------------------\n" +
+                                        "|       Very well, traveler. The adventure is not for everyone.       |\n" +
+                                        "|   Should you change your mind, the realm will be waiting for you.   |\n" +
+                                        "-----------------------------------------------------------------------\n");
+                                System.exit(0);
+                            } else if (command.equalsIgnoreCase("Y")) {
+                                MapLevelFour levelFour = new MapLevelFour(hero);
+                                System.out.println();
+                                levelFour.start();
+
+                                int remainingMonsters = levelFour.getRemainingMonsters();
+                                int remainingTreasures = levelFour.getRemainingTreasures();
+                                new SaveCommand(hero, remainingMonsters, remainingTreasures).execute();
+
+                                System.out.println("\n-----------------------------------------------------------------------\n" +
+                                        "|                Your journey ends here… for now.                     |\n" +
+                                        "|   The echoes of your footsteps will remain in these ancient halls.  |\n" +
+                                        "|        Rest well, brave soul — we shall meet again soon.            |\n" +
+                                        "-----------------------------------------------------------------------\n");
+                                System.exit(0);
+                            }
+                        }
+                    } else {
+                        System.exit(0);
+                    }
+                }
             }
-        }
-        else {
-            System.exit(0);
         }
     }
 }

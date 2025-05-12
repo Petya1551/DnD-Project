@@ -1,20 +1,25 @@
 package bg.tu_varna.sit.a1.f23621639.project.monsters;
 
+import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
+
 public abstract class Monster {
     protected int strength;
     protected int mana;
     protected int health;
+    protected double armor;
 
     public Monster() {
         this.strength = strength;
         this.mana = mana;
         this.health = health;
+        this.armor = armor;
     }
 
-    public abstract int attack();
-    public abstract int castSpell();
+    public abstract int attack(Hero hero);
+    public abstract int castSpell(Hero hero);
     public abstract void takeDamage(int damage);
     public abstract String getMonsterType();
+    public abstract String getMonsterArmorType();
 
     public boolean isAlive() {
         if (health > 0)
@@ -47,10 +52,19 @@ public abstract class Monster {
         this.health = health;
     }
 
+    public double getArmor() {
+        return armor;
+    }
+
+    public void setArmor(double armor) {
+        this.armor = armor;
+    }
+
     @Override
     public String toString() {
         return  "Strength: " + strength +
                 "\nMana: " + mana +
-                "\nHealth: " + health;
+                "\nHealth: " + health +
+                "\nArmor: " + (int)(armor*100) + "% (" + getMonsterArmorType() + ")";
     }
 }
