@@ -46,7 +46,7 @@ public abstract class Hero {
         System.out.println(name + " takes " + reduced + " damage.\n" + name + "'s remaining health: " + health);
     }
 
-    public void findTreasure(Item foundItem) {
+    public boolean findTreasure(Item foundItem) {
         System.out.println(name + " found a " + foundItem.getType() + " " + foundItem.getName() + " with bonus " + foundItem.getBonus() + "%!");
 
         Scanner scanner = new Scanner(System.in);
@@ -79,6 +79,7 @@ public abstract class Hero {
                                    "   |   |\n" +
                                    "    \\ /\n" +
                                    "     Y\n");
+                return true;
             } else if (foundItem instanceof Armor) {
                 System.out.println("\nEquipped new armor: " + foundItem.getName() + ".\n");
                 this.armor = (Armor) foundItem;
@@ -93,6 +94,7 @@ public abstract class Hero {
                 System.out.println(" \\      | |      /");
                 System.out.println("  \\     | |     /");
                 System.out.println("   \\____|_|____/\n");
+                return true;
             } else if (foundItem instanceof Spell) {
                 System.out.println("\nEquipped new spell: " + foundItem.getName() + ".\n");
                 this.spell = (Spell) foundItem;
@@ -106,10 +108,12 @@ public abstract class Hero {
                 System.out.println("        /________|[  ]|___\\");
                 System.out.println("______./_________|[__]|____\\.______");
                 System.out.println("\\_________________________________/\n");
+                return true;
             }
         } else {
             System.out.println("\nYou discarded the " + foundItem.getName() + ".\n");
         }
+        return false;
     }
 
     public void levelUp() {
@@ -160,6 +164,26 @@ public abstract class Hero {
             return true;
         else
             return false;
+    }
+
+    public void reset() {
+        this.level = 1;
+        this.maxHealth = 50;
+        this.health = maxHealth;
+        this.weapon = new Weapon("Ordinary sword", 20);
+        this.spell = new Spell("Fire ball", 20);
+        this.armor = new Armor("None", 0);
+
+        if (this instanceof Human) {
+            this.strength = 30;
+            this.mana = 20;
+        } else if (this instanceof Mage) {
+            this.strength = 10;
+            this.mana = 40;
+        } else if (this instanceof Warrior) {
+            this.strength = 40;
+            this.mana = 10;
+        }
     }
 
     public abstract String getRace();
