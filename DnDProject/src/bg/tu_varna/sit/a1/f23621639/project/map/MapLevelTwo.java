@@ -2,8 +2,16 @@ package bg.tu_varna.sit.a1.f23621639.project.map;
 
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
+/**
+ * Represents the second level of the labyrinth map.
+ */
 public class MapLevelTwo extends Maps {
 
+    /**
+     * Constructs the second map level for the specified hero.
+     *
+     * @param hero the hero navigating the map
+     */
     public MapLevelTwo(Hero hero) {
         super(hero);
     }

@@ -12,6 +12,11 @@ import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Abstract class representing a game map level.
+ * Handles player movement, interactions with monsters and treasures,
+ * and progression through the labyrinth.
+ */
 public abstract class Maps {
     private char[][] map;
     private Hero hero;
@@ -20,6 +25,11 @@ public abstract class Maps {
     private int remainingMonsters = 0;
     private int remainingTreasures = 0;
 
+    /**
+     * Constructs a map level for a given hero.
+     *
+     * @param hero the hero navigating the map
+     */
     public Maps(Hero hero) {
         this.hero = hero;
     }

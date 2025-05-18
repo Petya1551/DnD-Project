@@ -14,9 +14,18 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
+
+/**
+ * Command implementation that starts the hero creation and quest initiation process.
+ */
 public class BeginQuestCommand implements Command {
     private final Scanner scanner;
 
+    /**
+     * Constructs a BeginQuestCommand with the given Scanner for user input.
+     *
+     * @param scanner the Scanner to read user input from
+     */
     public BeginQuestCommand(Scanner scanner) {
         this.scanner = scanner;
     }

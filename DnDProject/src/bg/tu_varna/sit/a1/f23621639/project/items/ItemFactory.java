@@ -5,6 +5,10 @@ import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
 import java.util.Random;
 
+/**
+ * Factory class responsible for generating random items
+ * based on the current map level.
+ */
 public class ItemFactory {
 
     /**

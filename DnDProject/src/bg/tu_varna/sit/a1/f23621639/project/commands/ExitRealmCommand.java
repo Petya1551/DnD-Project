@@ -2,6 +2,10 @@ package bg.tu_varna.sit.a1.f23621639.project.commands;
 
 import java.util.Scanner;
 
+/**
+ * Command to exit the game realm.
+ * When executed, it displays a farewell message and terminates the application.
+ */
 public class ExitRealmCommand implements Command {
 
     /**

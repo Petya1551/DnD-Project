@@ -8,6 +8,10 @@ import bg.tu_varna.sit.a1.f23621639.project.monsters.Monster;
 
 import java.util.Scanner;
 
+/**
+ * Represents an abstract Hero character in the game.
+ * Heroes can level up, attack, cast spells, take damage, and equip items such as weapons, armor, and spells.
+ */
 public abstract class Hero {
     protected String name;
     protected int strength;
@@ -19,6 +23,11 @@ public abstract class Hero {
     protected Spell spell;
     protected Armor armor;
 
+    /**
+     * Constructs a new Hero with a given name and default attributes.
+     *
+     * @param name the name of the hero
+     */
     public Hero(String name) {
         this.name = name;
         this.maxHealth = 50;

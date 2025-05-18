@@ -5,6 +5,16 @@ import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
 import java.util.Scanner;
 
+/**
+ * The entry point of the game application.
+ * Presents an introductory narrative and menu options to the player,
+ * then processes user input to start a new quest, load a saved game,
+ * exit the realm, or access help commands.
+ * The user interacts through the console, with prompts guiding them
+ * through the initial game setup and command selection.
+ *
+ * @throws InterruptedException if the thread is interrupted during command execution
+ */
 public class StartMenu {
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);

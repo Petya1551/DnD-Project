@@ -12,12 +12,24 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
+/**
+ * Manages a turn-based battle between a Hero and a Monster.
+ * Handles attack choices, damage application, and battle outcome.
+ */
 public class Battle {
     private final Hero hero;
     private final Monster monster;
     private final Random random;
     private final Scanner scanner;
 
+    /**
+     * Constructs a new Battle instance between a hero and a monster.
+     *
+     * @param hero    the Hero participating in the battle
+     * @param monster the Monster opponent the hero will fight
+     * @param random  a Random instance used to determine turn order and monster actions
+     * @param scanner a Scanner instance used to read user input for attack choices
+     */
     public Battle(Hero hero, Monster monster, Random random, Scanner scanner) {
         this.hero = hero;
         this.monster = monster;

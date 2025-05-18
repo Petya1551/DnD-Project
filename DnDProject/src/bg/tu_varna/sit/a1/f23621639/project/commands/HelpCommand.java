@@ -1,5 +1,9 @@
 package bg.tu_varna.sit.a1.f23621639.project.commands;
 
+/**
+ * Command that displays a guide of all available commands to the user.
+ * This is intended to help the player understand how to interact with the system.
+ */
 public class HelpCommand implements Command{
 
     /**

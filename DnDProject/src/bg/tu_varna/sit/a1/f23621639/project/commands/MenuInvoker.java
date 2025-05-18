@@ -3,6 +3,11 @@ package bg.tu_varna.sit.a1.f23621639.project.commands;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The MenuInvoker class manages the registration and execution of commands
+ * represented by the CommandsEnum enum. It acts as a command dispatcher,
+ * mapping input strings to their respective command implementations.
+ */
 public class MenuInvoker {
     private final Map<CommandsEnum, Command> commandMap = new HashMap<>();
 

@@ -2,12 +2,21 @@ package bg.tu_varna.sit.a1.f23621639.project.monsters;
 
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
+/**
+ * Abstract base class representing a Monster.
+ * Each monster has strength, mana, health, and armor.
+ * Specific monster types must implement their own behavior.
+ */
 public abstract class Monster {
     protected int strength;
     protected int mana;
     protected int health;
     protected double armor;
 
+    /**
+     * Default constructor.
+     * Field values are expected to be initialized by subclasses.
+     */
     public Monster() {
         this.strength = strength;
         this.mana = mana;

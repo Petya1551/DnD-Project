@@ -7,6 +7,10 @@ import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelThree;
 import bg.tu_varna.sit.a1.f23621639.project.map.MapLevelTwo;
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
+/**
+ * Command that loads a previously saved game state
+ * from a file and resumes gameplay at the appropriate level based on the hero's progress.
+ */
 public class OpenCommand implements Command{
 
     /**
