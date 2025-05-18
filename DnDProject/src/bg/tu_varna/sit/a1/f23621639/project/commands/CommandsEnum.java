@@ -1,5 +1,10 @@
 package bg.tu_varna.sit.a1.f23621639.project.commands;
 
+/**
+ * Enum representing the available commands in the game.
+ * Each command has an associated display text that represents the
+ * phrase players must type to invoke the command.
+ */
 public enum CommandsEnum {
     BEGIN_QUEST("begin your quest"),
     LEAVE_REALM("leave the realm"),
@@ -11,6 +16,11 @@ public enum CommandsEnum {
 
     private final String displayText;
 
+    /**
+     * Constructs a command enum with the given display text.
+     *
+     * @param displayText the phrase that triggers this command
+     */
     CommandsEnum(String displayText) {
         this.displayText = displayText;
     }

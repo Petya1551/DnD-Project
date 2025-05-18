@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for handling file operations related to game maps.
+ */
 public class FileManager {
 
     /**

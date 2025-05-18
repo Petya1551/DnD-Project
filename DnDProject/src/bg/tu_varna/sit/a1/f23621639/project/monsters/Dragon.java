@@ -4,9 +4,18 @@ import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
 import java.util.Random;
 
+/**
+ * Represents a Dragon monster with stats that scale based on level.
+ * The Dragon can attack and cast spells based on the level of the hero it faces.
+ */
 public class Dragon extends Monster {
     Random random = new Random();
 
+    /**
+     * Constructs a new Dragon instance, initializing its stats based on the given level.
+     *
+     * @param level the level of the Dragon, which scales its attributes
+     */
     public Dragon(int level) {
         int baseStrength = 25;
         int baseMana = 25;

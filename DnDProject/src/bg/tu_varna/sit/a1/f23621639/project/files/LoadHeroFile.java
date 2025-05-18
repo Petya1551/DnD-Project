@@ -12,6 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Utility class responsible for loading a Hero object from a formatted text file.
+ */
 public class LoadHeroFile {
 
     /**

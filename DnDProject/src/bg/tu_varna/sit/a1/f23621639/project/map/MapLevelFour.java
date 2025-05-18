@@ -2,8 +2,16 @@ package bg.tu_varna.sit.a1.f23621639.project.map;
 
 import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
+/**
+ * Represents the fourth level of the labyrinth map.
+ */
 public class MapLevelFour extends Maps{
 
+    /**
+     * Constructs a new MapLevelFour instance with the specified hero.
+     *
+     * @param hero the hero navigating this level
+     */
     public MapLevelFour(Hero hero) {
         super(hero);
     }
