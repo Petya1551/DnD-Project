@@ -8,6 +8,11 @@ public class MapLevelOne extends Maps {
         super(hero);
     }
 
+    /**
+     * Returns the file paths of the maps available for level one.
+     *
+     * @return array of level 1 map file paths
+     */
     @Override
     protected String[] getMapFilePaths() {
         return new String[] {
@@ -16,21 +21,41 @@ public class MapLevelOne extends Maps {
         };
     }
 
+    /**
+     * Returns the string representation of this level.
+     *
+     * @return "First"
+     */
     @Override
     protected String getLevel() {
         return "First";
     }
 
+    /**
+     * Returns the numeric representation of this level.
+     *
+     * @return 1
+     */
     @Override
     public int currentLevel() {
         return 1;
     }
 
+    /**
+     * Returns the X coordinate for the level exit.
+     *
+     * @return 8
+     */
     @Override
     protected int getPlayerXEnd() {
         return 8;
     }
 
+    /**
+     * Returns the Y coordinate for the level exit.
+     *
+     * @return 8
+     */
     @Override
     protected int getPlayerYEnd() {
         return 8;

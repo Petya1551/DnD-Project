@@ -19,6 +19,13 @@ public class Dragon extends Monster {
         this.armor = baseArmor + (level - 1) * 0.05;
     }
 
+    /**
+     * Executes a physical attack on the given hero.
+     * The damage scales based on the hero's level.
+     *
+     * @param hero the hero being attacked
+     * @return the amount of physical damage dealt
+     */
     @Override
     public int attack(Hero hero) {
         int attackLevel = 6;
@@ -36,6 +43,13 @@ public class Dragon extends Monster {
         return attack;
     }
 
+    /**
+     * Executes a magical attack on the given hero.
+     * The damage scales based on the hero's level.
+     *
+     * @param hero the hero being attacked
+     * @return the amount of spell damage dealt
+     */
     @Override
     public int castSpell(Hero hero) {
         int spellLevel = 6;
@@ -53,13 +67,16 @@ public class Dragon extends Monster {
         return spell;
     }
 
+    /**
+     * Applies incoming damage to the Dragon, reduced based on its armor.
+     *
+     * @param damage the raw damage received
+     */
     @Override
     public void takeDamage(int damage) {
         double scalesReduction = damage * armor;
         int reduced = damage - (int) scalesReduction;
         health -= reduced;
-        strength -= reduced;
-        mana -= reduced;
 
         if (health < 0) {
             health = 0;
@@ -69,11 +86,21 @@ public class Dragon extends Monster {
         }
     }
 
+    /**
+     * Gets the monster type name.
+     *
+     * @return the type "Dragon"
+     */
     @Override
     public String getMonsterType() {
         return "Dragon";
     }
 
+    /**
+     * Gets the monster's armor type.
+     *
+     * @return the string "Scales"
+     */
     @Override
     public String getMonsterArmorType() {
         return "Scales";

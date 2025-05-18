@@ -1,16 +1,27 @@
 package bg.tu_varna.sit.a1.f23621639.project.commands;
 
 public class HelpCommand implements Command{
+
+    /**
+     * Executes the help command by printing a formatted list of all valid user commands.
+     * Each command is shown with a brief description to guide the user.
+     *
+     * @throws InterruptedException not used in this implementation,
+     *         but declared to fulfill the Command interface contract.
+     */
     @Override
     public void execute() throws InterruptedException {
-        System.out.println("\nThe following commands are supported:");
-        System.out.println("Begin your quest starts the game");
-        System.out.println("Leave the Realm exits the program");
-        System.out.println("Open <file> opens <file>");
-        System.out.println("Close closes currently opened file");
-        System.out.println("Save saves the current map status and the players status");
-        System.out.println("Saveas <file> the current map status and the players status in <file>");
-        System.out.println("Help prints this information");
-        System.out.println("\nType one of the following phrases to continue (e.g. Begin Your Quest, Leave the Realm, Help).");
+        System.out.println("\n===============================================================");
+        System.out.println("                        Command Guide                         ");
+        System.out.println("===============================================================");
+        System.out.println("|  Begin Your Quest    - Start a new journey                  |");
+        System.out.println("|  Leave the Realm     - Exit the realm entirely              |");
+        System.out.println("|  Load Saved Journey  - Load your previously saved progress  |");
+        System.out.println("|  Close the Grimoire  - Close the currently opened file      |");
+        System.out.println("|  Seal Your Fate      - Save current state to 'save_game.txt'|");
+        System.out.println("|  Seal New Destiny    - Save progress to a new custom file   |");
+        System.out.println("|  Learn the Ways      - Display this help guide              |");
+        System.out.println("===============================================================");
+        System.out.println("\nType one of the following phrases to continue (e.g. Begin Your Quest, Leave the Realm...).");
     }
 }

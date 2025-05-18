@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class ExitRealmCommand implements Command {
 
+    /**
+     * Executes the exit command by displaying a farewell message
+     * and terminating the program with status code 0.
+     *
+     * @throws InterruptedException not thrown in this implementation,
+     *         but declared to comply with the Command interface.
+     */
     @Override
     public void execute() throws InterruptedException {
         System.out.println("\n-----------------------------------------------------------------------\n" +

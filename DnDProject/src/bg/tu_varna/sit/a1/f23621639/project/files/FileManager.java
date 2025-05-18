@@ -5,6 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
+
+    /**
+     * Loads a map from a given file path and returns it as a 2D character array.
+     * Each line in the file represents a row in the map, and each character
+     * represents a cell in that row.
+     *
+     * @param filePath the path to the map file
+     * @return a 2D char array representing the map layout,
+     *         or null if an error occurs during file reading
+     */
     public static char[][] loadMapFromFile(String filePath) {
         File file = new File(filePath);
 

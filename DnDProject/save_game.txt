@@ -1,98 +1,17 @@
 === Game Save ===
-Remaining Monsters: 2
-Remaining Treasures: 0
+Remaining Monsters: 4
+Remaining Treasures: 3
 Hero Status:
-Name: EmpresPeci
-Race: Mage
-Strength: 10
-Mana: 40
-Health: 50/50
-Level: 1
-Weapon: Ordinary sword
-Spell: Arcane Explosion
-Armor: Frostbite Mail
-=================
-=== Game Save ===
-Remaining Monsters: 3
-Remaining Treasures: 2
-Hero Status:
-Name: EmpresPeci
-Race: Mage
-Strength: 20
-Mana: 50
-Health: 50/60
-Level: 2
-Weapon: Ordinary sword
-Spell: Arcane Explosion
-Armor: Frostbite Mail
-=================
-=== Game Save ===
-Remaining Monsters: 5
-Remaining Treasures: 4
-Hero Status:
-Name: EmpresPeci
-Race: Mage
-Strength: 30
-Mana: 60
-Health: 50/70
-Level: 3
-Weapon: Ordinary sword
-Spell: Arcane Explosion
-Armor: Frostbite Mail
-=================
-=== Game Save ===
-Remaining Monsters: 8
-Remaining Treasures: 6
-Hero Status:
-Name: EmpresPeci
+Name: PETYA
 Race: Mage
 Strength: 40
 Mana: 70
 Health: 50/80
 Level: 4
-Weapon: Ordinary sword
-Spell: Arcane Explosion
-Armor: Frostbite Mail
-=================
-=== Game Save ===
-Remaining Monsters: 8
-Remaining Treasures: 6
-Hero Status:
-Name: EmpresPeci
-Race: Mage
-Strength: 50
-Mana: 80
-Health: 50/90
-Level: 5
-Weapon: Ordinary sword
-Spell: Arcane Explosion
-Armor: Frostbite Mail
-=================
-=== Game Save ===
-Remaining Monsters: 2
-Remaining Treasures: 1
-Hero Status:
-Name: Petyaaaaa
-Race: Mage
-Strength: 10
-Mana: 40
-Health: 50/50
-Level: 1
-Weapon: Dragon Slayer Sword
-Spell: Fire ball
+Weapon: Hammer of Thunder
+Weapon's bonus: 28%
+Spell: Fireball of Doom
+Spell's bonus: 23%
 Armor: None
-=================
-=== Game Save ===
-Remaining Monsters: 1
-Remaining Treasures: 2
-Hero Status:
-Name: Petyaaaaa
-Race: Mage
-Strength: 10
-Mana: 40
-Health: 50/50
-Level: 1
-Weapon: Ordinary sword
-Spell: Fire ball
-Armor: None
+Armor's bonus: 0%
 =================

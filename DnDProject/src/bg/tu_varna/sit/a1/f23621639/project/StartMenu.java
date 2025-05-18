@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.a1.f23621639.project;
 
 import bg.tu_varna.sit.a1.f23621639.project.commands.*;
+import bg.tu_varna.sit.a1.f23621639.project.races.Hero;
 
 import java.util.Scanner;
 
@@ -58,14 +59,16 @@ public class StartMenu {
             System.out.println("==========================");
             System.out.println("   THE LABYRINTH AWAITS");
             System.out.println("==========================\n");
-            System.out.println("Type one of the following phrases to continue (e.g. Begin Your Quest or Leave the Realm).");
+            System.out.println("Type one of the following phrases to continue (e.g. Begin Your Quest, Leave the Realm...).");
             System.out.println("1. Begin Your Quest");
             System.out.println("2. Leave the Realm");
-            System.out.println("3. Help");
+            System.out.println("3. Load Saved Journey");
+            System.out.println("4. Learn the Ways");
 
             MenuInvoker invoker = new MenuInvoker();
             invoker.registerCommand(CommandsEnum.BEGIN_QUEST, new BeginQuestCommand(scanner));
             invoker.registerCommand(CommandsEnum.LEAVE_REALM, new ExitRealmCommand());
+            invoker.registerCommand(CommandsEnum.OPEN, new OpenCommand());
             invoker.registerCommand(CommandsEnum.HELP, new HelpCommand());
 
             String input;
