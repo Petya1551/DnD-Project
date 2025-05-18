@@ -13,17 +13,24 @@ public class CloseCommand implements Command{
         this.hero = hero;
     }
 
+    /**
+     * Executes the close command, notifying the user the map is closed,
+     * and restricting available commands to opening a saved journey or leaving the realm.
+     * Keeps prompting until a valid command is entered and executed.
+     *
+     * @throws InterruptedException not thrown in this implementation,
+     *         but declared to comply with the Command interface.
+     */
     @Override
     public void execute() throws InterruptedException {
-        System.out.println("\nThe map has been closed. Your stats are changed to default.");
-        hero.reset();
+        System.out.println("\nThe map has been closed.");
 
         MenuInvoker invoker = new MenuInvoker();
-        invoker.registerCommand(CommandsEnum.OPEN, new OpenCommand(scanner, hero));
+        invoker.registerCommand(CommandsEnum.OPEN, new OpenCommand());
         invoker.registerCommand(CommandsEnum.LEAVE_REALM, new ExitRealmCommand());
 
         System.out.println("\nYou can now only type the following commands:");
-        System.out.println("1. Open (to begin your journey from the start)");
+        System.out.println("1. Open");
         System.out.println("2. Leave the Realm");
 
         while (true) {

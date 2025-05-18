@@ -28,6 +28,11 @@ public abstract class Hero {
         this.armor = new Armor("None", 0);
     }
 
+    /**
+     * Reduces hero's health based on damage received and armor protection.
+     *
+     * @param damage the incoming damage
+     */
     public void takeDamage(int damage) {
         int reduced = damage;
         if (armor != null) {
@@ -46,6 +51,12 @@ public abstract class Hero {
         System.out.println(name + " takes " + reduced + " damage.\n" + name + "'s remaining health: " + health);
     }
 
+    /**
+     * Allows the hero to decide whether to equip a newly found item (weapon, armor, or spell).
+     *
+     * @param foundItem the item found
+     * @return true if the item was equipped, false otherwise
+     */
     public boolean findTreasure(Item foundItem) {
         System.out.println(name + " found a " + foundItem.getType() + " " + foundItem.getName() + " with bonus " + foundItem.getBonus() + "%!");
 
@@ -116,6 +127,9 @@ public abstract class Hero {
         return false;
     }
 
+    /**
+     * Levels up the hero, allowing the player to distribute points among strength, mana, and health.
+     */
     public void levelUp() {
         Scanner scanner = new Scanner(System.in);
         int points = 30;
@@ -133,7 +147,7 @@ public abstract class Hero {
             System.out.print("Allocate to Health: ");
             maxHp = Integer.parseInt(scanner.nextLine());
 
-            if (str + mana + maxHp != 30) {
+            if (str + mana + maxHp != 30 || str < 0 || mana < 0 || maxHp < 0) {
                 System.out.println("Invalid input. Total must be exactly 30 points. Try again.");
                 str = mana = maxHp = 0;
             } else {
@@ -149,41 +163,36 @@ public abstract class Hero {
         System.out.println("\nNew stats -> Strength: " + this.strength + ", Mana: " + this.mana + ", Health: " + this.maxHealth + "\n");
     }
 
+    /**
+     * Calculates the hero's physical attack power.
+     *
+     * @return total physical attack power
+     */
     public int attack() {
         int bonus = weapon.getBonus();
         return strength + (strength * bonus / 100);
     }
 
+    /**
+     * Calculates the hero's spell attack power.
+     *
+     * @return total magical attack power
+     */
     public int castSpell() {
         int bonus = spell.getBonus();
         return mana + (mana * bonus / 100);
     }
 
+    /**
+     * Checks whether the hero is still alive.
+     *
+     * @return true if health is greater than 0, false otherwise
+     */
     public boolean isAlive() {
         if (health > 0)
             return true;
         else
             return false;
-    }
-
-    public void reset() {
-        this.level = 1;
-        this.maxHealth = 50;
-        this.health = maxHealth;
-        this.weapon = new Weapon("Ordinary sword", 20);
-        this.spell = new Spell("Fire ball", 20);
-        this.armor = new Armor("None", 0);
-
-        if (this instanceof Human) {
-            this.strength = 30;
-            this.mana = 20;
-        } else if (this instanceof Mage) {
-            this.strength = 10;
-            this.mana = 40;
-        } else if (this instanceof Warrior) {
-            this.strength = 40;
-            this.mana = 10;
-        }
     }
 
     public abstract String getRace();
@@ -260,6 +269,11 @@ public abstract class Hero {
         this.armor = armor;
     }
 
+    /**
+     * Returns a string representation of the hero's stats and equipment.
+     *
+     * @return formatted string with all hero information
+     */
     @Override
     public String toString() {
         return  "Name: " + getName() +
@@ -269,7 +283,10 @@ public abstract class Hero {
                 "\nHealth: " + getHealth() + "/" + getMaxHealth() +
                 "\nLevel: " + getLevel() +
                 "\nWeapon: " + getWeapon().getName() +
+                "\nWeapon's bonus: " + getWeapon().getBonus() + "%" +
                 "\nSpell: " + getSpell().getName() +
-                "\nArmor: " + getArmor().getName();
+                "\nSpell's bonus: " + getSpell().getBonus() + "%" +
+                "\nArmor: " + getArmor().getName() +
+                "\nArmor's bonus: " + getArmor().getBonus() + "%";
     }
 }

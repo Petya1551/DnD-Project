@@ -9,6 +9,11 @@ public class Warrior extends Hero {
         this.health = 50;
     }
 
+    /**
+     * Returns the race type of this hero.
+     *
+     * @return the string "Warrior"
+     */
     @Override
     public String getRace() {
         return "Warrior";

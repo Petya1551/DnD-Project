@@ -15,12 +15,44 @@ public abstract class Monster {
         this.armor = armor;
     }
 
+    /**
+     * Executes a physical attack on the given hero.
+     *
+     * @param hero the hero being attacked
+     * @return the amount of damage dealt
+     */
     public abstract int attack(Hero hero);
+    /**
+     * Executes a magical attack on the given hero.
+     *
+     * @param hero the hero being attacked
+     * @return the amount of spell damage dealt
+     */
     public abstract int castSpell(Hero hero);
+    /**
+     * Applies damage to the monster, factoring in its armor.
+     *
+     * @param damage the incoming raw damage
+     */
     public abstract void takeDamage(int damage);
+    /**
+     * Returns the type of the monster (e.g., "Dragon").
+     *
+     * @return the monster's type
+     */
     public abstract String getMonsterType();
+    /**
+     * Returns the type of armor the monster has (e.g., "Scales").
+     *
+     * @return the armor type
+     */
     public abstract String getMonsterArmorType();
 
+    /**
+     * Checks if the monster is still alive.
+     *
+     * @return true if health > 0, otherwise false
+     */
     public boolean isAlive() {
         if (health > 0)
             return true;
@@ -60,6 +92,11 @@ public abstract class Monster {
         this.armor = armor;
     }
 
+    /**
+     * Returns a string representation of the monster's stats.
+     *
+     * @return formatted stats as a string
+     */
     @Override
     public String toString() {
         return  "Strength: " + strength +

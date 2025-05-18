@@ -17,9 +17,16 @@ public class SaveCommand implements Command {
         this.treasures = treasures;
     }
 
+
+    /**
+     * Saves game progress to "save_game.txt" file.
+     * Overwrites any existing data in the file.
+     *
+     * @throws InterruptedException Declared to satisfy the Command interface, not used.
+     */
     @Override
-    public void execute() {
-        try (FileWriter writer = new FileWriter("save_game.txt", true)) {
+    public void execute() throws InterruptedException {
+        try (FileWriter writer = new FileWriter("save_game.txt", false)) {
             writer.write("=== Game Save ===\n");
             writer.write("Remaining Monsters: " + monsters + "\n");
             writer.write("Remaining Treasures: " + treasures + "\n");

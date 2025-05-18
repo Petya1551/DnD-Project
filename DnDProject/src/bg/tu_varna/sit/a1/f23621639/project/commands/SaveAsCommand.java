@@ -19,8 +19,14 @@ public class SaveAsCommand implements Command{
         this.scanner = scanner;
     }
 
+    /**
+     * Prompts the user to enter a valid `.txt` filename and saves the game state
+     * including hero information, remaining monsters, and treasures to that file.
+     *
+     * @throws InterruptedException Required by the Command interface, not used here.
+     */
     @Override
-    public void execute() {
+    public void execute() throws InterruptedException {
         String fileName;
         while (true) {
             System.out.print("Enter a file name ending with `.txt` (e.g., `my_save.txt`): ");

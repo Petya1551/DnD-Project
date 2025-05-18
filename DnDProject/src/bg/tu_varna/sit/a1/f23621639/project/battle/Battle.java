@@ -25,6 +25,10 @@ public class Battle {
         this.scanner = scanner;
     }
 
+    /**
+     * Starts the battle sequence. The battle continues until either
+     * the hero or the monster's health reaches zero.
+     */
     public void startBattle() {
         int initialHeroHealth = hero.getHealth();
         System.out.println("BATTLE BEGINS");
